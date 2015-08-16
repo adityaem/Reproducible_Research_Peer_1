@@ -45,6 +45,7 @@ rmean
 rmedian <- median(steps_by_day$steps)
 rmedian
 ```
+Reproducible_Research_Peer_1/outputs/q3a.png
 The mean is `10766.19`  and the median is `10765`  
 
 ##3b.What is the average daily activity pattern?
