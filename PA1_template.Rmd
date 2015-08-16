@@ -2,6 +2,7 @@
 title: "Reproducible Research Peer Assessment 1 - Analyzing Activity Monitoring Device Data"
 output: html_document
 ---
+
 ##Introduction
 It is now possible to collect a large amount of data about personal movement using activity monitoring devices such as a Fitbit, Nike Fuelband, or Jawbone Up. These type of devices are part of the “quantified self” movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. But this data remains under-utilized because the raw data is hard to obtain and there are limited tools and statistical methods available for interpreting the data.
 This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
@@ -38,7 +39,7 @@ rmean
 rmedian <- median(steps_by_day$steps)
 rmedian
 ```
-The mean is `10766.19`  and the median is `10765`  
+The mean is `r rmean`  and the median is `r rmedian`  
 
 ##3b.What is the average daily activity pattern?
 1. Calculate average steps for each interval for all days   
@@ -46,15 +47,12 @@ The mean is `10766.19`  and the median is `10765`
 3. Find interval with most average steps    
 ```{r}
 steps_by_interval <- aggregate(steps ~ interval, data, mean)
-
 plot(steps_by_interval$interval,steps_by_interval$steps, type="l", xlab="Interval", ylab="Number of Steps",main="Average Number of Steps per Day by Interval")
-
 max_interval <- steps_by_interval[which.max(steps_by_interval$steps),1]
-
-print(max_interval)
+max_interval
 
 ```
-The interval with most steps is `835`  
+The interval with most steps is `r max_interval`  
 
 ##3c.Imputing missing values  
  Note that there are a number of days/intervals where there are missing values (coded as NA). The presence of missing days may introduce  bias into some calculations or summaries of the data.
@@ -70,7 +68,7 @@ NATotal
 
 
 ```
-Total Number of Missing values are `2304`  
+Total Number of Missing values are `r NATotal`  
 
 ###2.Using Mean for the day compute missing values
 ```{r}
@@ -113,13 +111,15 @@ rmediantotal <- median(StepsTotalUnion$steps)
 rmediantotal
 ```
 **Do these values differ from the estimates from the first part of the assignment?**  
-*Ans. The mean is the same however the median does have a small variance. between the total which includes the missing values to the base by 1.18*
+
 ```{r}
 rmediandiff <- rmediantotal - rmedian
 rmediandiff
 rmeandiff <- rmeantotal - rmean
 rmeandiff
 ```
+
+*Ans. The mean(Mean Var: `r rmeandiff`) is the same however the median does have a small variance(Median Var:`r rmediandiff`). between the total which includes the missing values to the base*
 **What is the impact of imputing missing data on the estimates of the total daily number of steps?**  
 *On observation the impact of the missing data has the biggest effect on the 10000 - 150000 step interval and changes frequency from 27.5 to 35 a variance of 7.5*  
 
