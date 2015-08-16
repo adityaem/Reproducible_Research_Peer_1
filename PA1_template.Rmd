@@ -119,7 +119,7 @@ rmeandiff <- rmeantotal - rmean
 rmeandiff
 ```
 
-*Ans. The mean(Mean Var: `r rmeandiff`) is the same however the median does have a small variance(Median Var:`r rmediandiff`). between the total which includes the missing values to the base*
+*Ans. The mean(Mean Var: `r rmeandiff`) is the same however the median does have a small variance(Median Var:`r rmediandiff`). between the total which includes the missing values to the base*  
 **What is the impact of imputing missing data on the estimates of the total daily number of steps?**  
 *On observation the impact of the missing data has the biggest effect on the 10000 - 150000 step interval and changes frequency from 27.5 to 35 a variance of 7.5*  
 
